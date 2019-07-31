@@ -13,3 +13,8 @@ public class HelloWorld{
         System.out.println(numb);
      }
 }
+
+/*
+OUTPUT:
+321
+*/
