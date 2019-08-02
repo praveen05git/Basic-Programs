@@ -6,3 +6,8 @@ class TestStringConcatenation1{
  
  }  
 }  
+
+/*
+USING STRING BUILDER:
+String s=(new StringBuilder()).append("Sachin").append(" Tendulkar).toString();  
+*/
