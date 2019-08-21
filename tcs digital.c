@@ -23,62 +23,64 @@ int main()
                 printf("%d\n",min);
                 j++;
             }
-        else
+            else
             {
-min=a[i][j+1];
-printf("%d\n",min);
-j++;
-}
-}
-else if( j!=(n-1) && i!=(n-1) && a[i+1][j]<a[i][j+1])
-{
-if(a[i][j]>a[i+1][j])
-{
-min=a[i][j];
-printf("%d\n",min);
-i++;
-}
-else
-{
-min=a[i+1][j];
-printf("%d\n",min);
-i++;
-}
-}
-if(j==n-1)
-{
-if(a[i+1][j]>min)
-{
-min=a[i+1][j];
-printf("%d\n",min);
-i++;
-}
-else
-{
-// min=a[i][j];
-printf("%d\n",min);
-i++;
-}
-}
-else 
-{
-if(i==n-1)
-{
-if(a[i][j+1]>min)
-{
-min=a[i][j+1];
-printf("%d\n",min);
-j++;
-}
-else
-{
-// min=a[i][j];
-printf("%d\n",min);
-j++;
-}
-}
-}
-}
+                min=a[i][j+1];
+                printf("%d\n",min);
+                j++;
+            }
+        }
+        else if( j!=(n-1) && i!=(n-1) && a[i+1][j]<a[i][j+1])
+        {
+            if(a[i][j]>a[i+1][j])
+            {
+                min=a[i][j];
+                printf("%d\n",min);
+                i++;
+            }
+            else
+            {
+                min=a[i+1][j];
+                printf("%d\n",min);
+                i++;
+            }
+        }
+        if(j==n-1)
+        {
+            if(a[i+1][j]>min)
+            {
+                min=a[i+1][j];
+                printf("%d\n",min);
+                i++;
+            }
+            else
+            {
+                // min=a[i][j];
+                printf("%d\n",min);
+                i++;
+            }
+        }
+        else 
+        {
+            if(i==n-1)
+            {
+                if(a[i][j+1]>min)
+                {
+                    min=a[i][j+1];
+                    printf("%d\n",min);
+                    j++;
+                }
+                else
+                {
+                    // min=a[i][j];
+                    printf("%d\n",min);
+                    j++;
+                }
+            }
+        }
+    }
+
 printf("%d",min);
 return 0;
+
 }
