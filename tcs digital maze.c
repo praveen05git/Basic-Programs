@@ -1,3 +1,8 @@
+/*
+QUESTION:
+https://prepinsta.com/tcs-digital-advanced-coding-question-0/
+*/
+
 #include <stdio.h>
 int main()
 {
