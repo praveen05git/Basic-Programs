@@ -9,8 +9,8 @@ class GFG {
 	static void bitonicGenerator(int arr[], int n) 
 	{ 
 		// create evenArr[] and oddArr[] 
-		Vector<Integer> evenArr = new Vector<Integer>(); 
-		Vector<Integer> oddArr = new Vector<Integer>(); 
+		ArrayList<Integer> evenArr = new ArrayList<Integer>(); 
+		ArrayList<Integer> oddArr = new ArrayList<Integer>();  
 
 		// Put elements in oddArr[] and evenArr[] as 
 		// per their position 
