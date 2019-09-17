@@ -1,0 +1,66 @@
+JAVA
+
+(ARRAY)
+
+int intArray[];    //declaring array
+intArray = new int[20]; // allocating memory to array
+
+int[] intArray = new int[20]; // combining both statements in one
+
+Arrays.sort(arr); //sorting array
+
+Arrays.sort(arr, Collections.reverseOrder());//reverse sort
+
+arr.length
+
+
+
+(ARRAYLIST)
+
+ArrayList<String> list=new ArrayList<String>();//Creating arraylist  
+ArrayList<Integer> arrlist = new ArrayList<Integer>();   
+
+list.add("Ravi");//Adding object in arraylist    
+
+list.size();//Number of elements
+
+list.set(3,"newElemet");//adding elemt at the index
+
+list.get(2);//getting element at the index
+
+list.remove("element");
+
+list.removeRange(0, 2); // removing range of 1st 2 elements 
+
+arrlist1.removeAll(arrlist2); //removing list2 elements from list1 
+
+Collections.sort(list); //sorting in arraylist
+
+
+
+
+PYTHON (List):
+
+cars=[]
+
+cars=["tata","hyundai"]
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+
+list[2] = 2001 //updating list
+
+del list[2] //deleting list
+
+cars.append("Honda")
+
+x = len(cars) //number of elements
+
+cars.sort()
+
+cars.sort(reverse=True)//original list is sorted
+
+y=sorted(cars)//original list is not sorted
+
+y=sorted(cars,reverse=true)
+
+x = cars.count("tata")
