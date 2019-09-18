@@ -39,6 +39,8 @@ arrlist1.removeAll(arrlist2); //removing list2 elements from list1
 
 Collections.sort(list); //sorting in arraylist
 
+list.contains(1)//returns true
+
 
 
 
