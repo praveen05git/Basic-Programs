@@ -51,13 +51,13 @@ class Processor
         return true;
     }
     
-    public Details viewAll()
+    public ArrayList<Details> viewAll()
     {
-        Details allDetails=new Details();
+        ArrayList<Details> allDetails=new ArrayList();
         
         for(Details detail : det)
         {
-            allDetails=detail;
+            allDetails.add(detail);
         }
         
         return allDetails;
@@ -75,20 +75,28 @@ public class HelloWorld{
      {
         Scanner sc=new Scanner(System.in);
         
-        int inid=sc.nextInt();
-        String inname=sc.next();
+        int inid;
+        String inname;
         
-        Details values = new Details(inid,inname);
+        for(int i=0;i<2;i++)
+        {
+            inid=sc.nextInt();
+            inname=sc.next();   
+            Details values = new Details(inid,inname);
+            processor.addDetails(values);
+        }
         
-        processor.addDetails(values);
         
         ArrayList<Details> emptyList=new ArrayList();
         
         emptyList=processor.viewAll();
         
+        for(Details em : emptyList)
+        {
+            System.out.println(em.getId());
+            System.out.println(em.getName());
+        }
         
-        
-    
      }
      
 }
