@@ -1,0 +1,38 @@
+How do we call one servlet from another servlet?
+We can use RequestDispatcher forward() method to forward the processing of a request to another servlet. If we want to include the another servlet output to the response, we can use RequestDispatcher include() method.
+
+
+How can we invoke another servlet in a different application?
+We can’t use RequestDispatcher to invoke servlet from another application because it’s specific for the application. If we have to forward the request to a resource in another application, we can use the ServletResponse sendRedirect() method and provide the complete URL of another servlet. This sends the response to the client with the response code as 302 to forward the request to another URL. If we have to send some data also, we can use cookies that will be part of the servlet response and sent in the request to another servlet.
+
+
+What is difference between ServletResponse sendRedirect() and RequestDispatcher forward() method?
+RequestDispatcher forward() is used to forward the same request to another resource whereas ServletResponse sendRedirect() is a two step process. In sendRedirect(), web application returns the response to client with status code 302 (redirect) with URL to send the request. The request sent is a completely new request.
+forward() is handled internally by the container whereas sednRedirect() is handled by browser.
+We should use forward() when accessing resources in the same application because it’s faster than sendRedirect() method that required an extra network call.
+In forward() browser is unaware of the actual processing resource and the URL in address bar remains same whereas in sendRedirect() URL in address bar change to the forwarded resource.
+forward() can’t be used to invoke a servlet in another context, we can only use sendRedirect() in this case.
+
+Why HttpServlet class is declared abstract?
+HttpServlet class provide HTTP protocol implementation of servlet but it’s left abstract because there is no implementation logic in service methods such as doGet() and doPost() and we should override at least one of the service methods. That’s why there is no point in having an instance of HttpServlet and is declared abstract class.
+
+Read more about abstract class.
+
+
+What are the phases of servlet life cycle?
+We know that Servlet Container manages the life cycle of Servlet, there are four phases of servlet life cycle.
+
+Servlet Class Loading – When container receives a request for a servlet, it first loads the class into memory and calls it’s default no-args constructor.
+Servlet Class Initialization – Once the servlet class is loaded, container initializes the ServletContext object for the servlet and then invoke its init method by passing the servlet config object. This is the place where a servlet class transforms from normal class to servlet.
+Request Handling – Once the servlet is initialized, it’s ready to handle the client requests. For every client request, servlet container spawns a new thread and invokes the service() method by passing the request and response object reference.
+Removal from Service – When container stops or we stop the application, servlet container destroys the servlet class by invoking the destroy() method.
+
+What are life cycle methods of a servlet?
+Servlet Life Cycle consists of three methods:
+
+public void init(ServletConfig config) – This method is used by container to initialize the servlet, this method is invoked only once in the lifecycle of servlet.
+public void service(ServletRequest request, ServletResponse response) – This method is called once for every request, container can’t invoke service() method until unless init() method is executed.
+public void destroy() – This method is invoked once when servlet is unloaded from memory.
+
+why we should override only no-agrs init() method.
+If we have to initialize some resource before we want our servlet to process client requests, we should override the init() method. If we override init(ServletConfig config) method, then the first statement should be super(config) to m
