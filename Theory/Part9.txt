@@ -1,0 +1,42 @@
+How to make sure a servlet is loaded at the application startup?
+Usually, servlet container loads a servlet on the first client request. Sometimes the servlet is heavy and takes time to loads, we might want to load it on application startup. We can use a load-on-startup element with servlet configuration in the web.xml file or use WebServlet annotation loadOnStartup variable to tell the container to load the servlet on system startup.
+
+
+<servlet>
+<servlet-name>foo</servlet-name>
+<servlet-class>com.foo.servlets.Foo</servlet-class>
+<load-on-startup>5</load-on-startup>
+</servlet>
+The load-on-startup value should be int, if it’s a negative integer then servlet container will load the servlet based on client requests and requirement but if it’s 0 or positive, then the container will load it on application startup.
+
+If there are multiple servlets with load-on-startup value such as 0,1,2,3 then lower integer value servlet will be loaded first.
+
+
+How to get the actual path of servlet in server?
+We can use following code snippet to get the actual path of the servlet in file system.
+
+getServletContext().getRealPath(request.getServletPath())
+
+
+How to get the server information in a servlet?
+We can use below code snippet to get the servlet information in a servlet through servlet context object.
+
+getServletContext().getServerInfo()
+
+
+Write a servlet to upload file on server.
+File Upload and Download and common tasks in a java web application. Unfortunately Servlet API doesn’t provide easy methods to upload file on server, so we can use Apache FileUpload jar to make our life easier.
+
+Please read File Upload Servlet post that provide all the necessary details with example program to upload and download file using servlets.
+
+
+How do we go with database connection and log4j integration in servlet?
+If you work with database connection a lot in your web application, its best to initialize it in a servlet context listener and set it as a context attribute for other servlets to use.
+
+Integrating Log4j is also very easy in web applications, all we need is a log4j configuration XML or property file and then configure it in a servlet context listener.
+
+For complete example, please look into Servlet Database and Log4j Example.
+
+
+How to get the IP address of client in servlet?
+We can use request.getRemoteAddr() to get the client IP address in servlet.
