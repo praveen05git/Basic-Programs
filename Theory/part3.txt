@@ -1,0 +1,25 @@
+What are the advantages of Servlet over CGI?
+Servlet technology was introduced to overcome the shortcomings of CGI technology.
+
+Servlets provide better performance than CGI in terms of processing time, memory utilization because servlets use benefits of multithreading and for each request, a new thread is created, that is faster than loading creating new Object for each request with CGI.
+Servlets and platform and system independent, the web application developed with Servlet can be run on any standard web container such as Tomcat, JBoss, Glassfish servers and on operating systems such as Windows, Linux, Unix, Solaris, Mac, etc.
+Servlets are robust because container takes care of the life cycle of servlet and we don’t need to worry about memory leaks, security, garbage collection, etc.
+Servlets are maintainable and the learning curve is small because all we need to take care is business logic for our application.
+
+What are common tasks performed by Servlet Container?
+Servlet containers are also known as web container, for example, Tomcat. Some of the important tasks of servlet container are:
+
+Communication Support: Servlet Container provides easy way of communication between web client (Browsers) and the servlets and JSPs. Because of the container, we don’t need to build a server socket to listen for any request from the web client, parse the request and generate a response. All these important and complex tasks are done by container and all we need to focus is on business logic for the applications.
+Lifecycle and Resource Management: Servlet Container takes care of managing the life cycle of servlet. From the loading of servlets into memory, initializing servlets, invoking servlet methods and to destroy them. The container also provides utility like JNDI for resource pooling and management.
+Multithreading Support: Container creates a new thread for every request to the servlet and provides them request and response objects to the processing. So servlets are not initialized for each request and save time and memory.
+JSP Support: JSPs doesn’t look like normal java classes but every JSP in the application is compiled by container and converted to Servlet and then container manages them like other servlets.
+Miscellaneous Task: Servlet container manages the resource pool, perform memory optimizations, execute garbage collector, provides security configurations, support for multiple applications, hot deployment and several other tasks behind the scene that makes a developer life easier.
+
+What is ServletConfig object?
+javax.servlet.ServletConfig is used to pass configuration information to Servlet. Every servlet has it’s own ServletConfig object and servlet container is responsible for instantiating this object. We can provide servlet init parameters in web.xml file or through use of WebInitParam annotation. We can use getServletConfig() method to get the ServletConfig object of the servlet.
+
+
+What is ServletContext object?
+javax.servlet.ServletContext interface provides access to web application parameters to the servlet. The ServletContext is unique object and available to all the servlets in the web application. When we want some init parameters to be available to multiple or all of the servlets in the web application, we can use ServletContext object and define parameters in web.xml using <context-param> element. We can get the ServletContext object via the getServletContext() method of ServletConfig. Servlet containers may also provide context objects that are unique to a group of servlets and which is tied to a specific portion of the URL path namespace of the host.
+
+ServletContext is enhanced in Servlet Specs 3 to introduce methods through which we can programmatically add Listeners and Filters and Servlet to the application. It also provides some utility methods such as getMimeType(), getResourceAsStream() etc.
