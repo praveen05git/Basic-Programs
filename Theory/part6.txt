@@ -1,0 +1,40 @@
+If we have to initialize some resource before we want our servlet to process client requests, we should override the init() method. If we override init(ServletConfig config) method, then the first statement should be super(config) to make sure superclass init(ServletConfig config) method is invoked first. That’s why GenericServlet provides another helper init() method without argument that get’s called at the end of init(ServletConfig config) method. We should always utilize this method for overriding init() method to avoid any issues as we may forget to add super() call in overriding init method with ServletConfig argument.
+
+
+What is URL Encoding?
+URL Encoding is the process of converting data into CGI form so that it can travel across the network without any issues. URL Encoding strips the white spaces and replaces special characters with escape characters. We can use java.net.URLEncoder.encode(String str, String unicode) to encode a String. URL Decoding is the reverse process of encoding and we can use java.net.URLDecoder.decode(String str, String unicode) to decode the encoded string. For example “Pankaj’s Data” is encoded to “Pankaj%27s+Data”.
+
+
+What are different methods of session management in servlets?
+The session is a conversational state between client and server and it can consist of multiple request and response between client and server. Since HTTP and Web Server both are stateless, the only way to maintain a session is when some unique information about the session (session-id) is passed between server and client in every request and response.
+
+Some of the common ways of session management in servlets are:
+
+User Authentication
+HTML Hidden Field
+Cookies
+URL Rewriting
+Session Management API
+Read more about these session management approaches in detail at Servlet Session Management Tutorial.
+
+
+What is URL Rewriting?
+We can use HttpSession for session management in servlets but it works with Cookies and we can disable the cookie in client browser. Servlet API provides support for URL rewriting that we can use to manage session in this case.
+
+The best part is that from a coding point of view, it’s very easy to use and involves one step – encoding the URL. Another good thing with Servlet URL Encoding is that it’s a fallback approach and it kicks in only if browser cookies are disabled.
+
+We can encode URL with HttpServletResponse encodeURL() method and if we have to redirect the request to another resource and we want to provide session information, we can use encodeRedirectURL() method.
+
+Read More at Servlet URL Rewriting.
+
+
+How does Cookies work in Servlets?
+Cookies are used a lot in web client-server communication, it’s not something specific to java. Cookies are text data sent by server to the client and it gets saved at the client local machine.
+
+Servlet API provides cookies support through javax.servlet.http.Cookie class that implements Serializable and Cloneable interfaces.
+
+HttpServletRequest getCookies() method is provided to get the array of Cookies from the request, since there is no point of adding Cookie to request, there are no methods to set or add a cookie to request.
+
+Similarly, HttpServletResponse addCookie(Cookie c) method is provided to attach cookie in the response header, there are no getter methods for a cookie.
+
+Read more at Cookies in Servlets.
