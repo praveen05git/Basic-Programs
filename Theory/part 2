@@ -1,0 +1,42 @@
+What is the use of servlet wrapper classes?
+Servlet HTTP API provides two wrapper classes – HttpServletRequestWrapper and HttpServletResponseWrapper. These wrapper classes are provided to help developers with custom implementation of servlet request and response types. We can extend these classes and override only specific methods we need to implement for custom request and response objects. These classes are not used in normal servlet programming.
+
+
+What is SingleThreadModel interface?
+SingleThreadModel interface was provided for thread safety and it guarantees that no two threads will execute concurrently in the servlet’s service method. However, SingleThreadModel does not solve all thread-safety issues. For example, session attributes and static variables can still be accessed by multiple requests on multiple threads at the same time, even when SingleThreadModel servlets are used. Also, it takes out all the benefits of multithreading support of servlets, that’s why this interface is Deprecated in Servlet 2.4.
+
+
+Do we need to override service() method?
+When servlet container receives client request, it invokes the service() method which in turn invokes the doGet(), doPost() methods based on the HTTP method of request. I don’t see any use case where we would like to override the service() method. The whole purpose of service() method is to forward to request to corresponding HTTP method implementations. If we have to do some pre-processing of request, we can always use servlet filters and listeners.
+
+
+Is it good idea to create servlet constructor?
+We can define a constructor for servlet but I don’t think it’s of any use because we won’t be having access to the ServletConfig object until unless servlet is initialized by the container. Ideally, if we have to initialize any resource for the servlet, we should override init() method where we can access servlet init parameters using ServletConfig object.
+
+
+What is difference between GenericServlet and HttpServlet?
+GenericServlet is protocol independent implementation of Servlet interface whereas HttpServlet is HTTP protocol specific implementation. Most of the times we use servlet for creating web application and that’s why we extend HttpServlet class. HttpServlet class extends GenericServlet and also provide some other methods specific to HTTP protocol.
+
+
+What is the inter-servlet communication?
+When we want to invoke another servlet from a servlet service methods, we use inter-servlet communication mechanisms. We can invoke another servlet using RequestDispatcher forward() and include() methods and provide additional attributes in request for other servlet use.
+
+
+Are Servlets Thread Safe? How to achieve thread-safety in servlets?
+HttpServlet init() method and destroy() method are called only once in the servlet life cycle, so we don’t need to worry about their synchronization. But service methods such as doGet() or doPost() are getting called in every client request and since servlet uses multithreading, we should provide thread safety in these methods.
+
+If there are any local variables in service methods, we don’t need to worry about their thread-safety because they are specific to each thread but if we have a shared resource then we can use synchronization to achieve thread-safety in servlets when working with shared resources.
+
+The thread safety mechanisms are similar to thread safety in standalone java application, read more about them at Thread Safety in Java.
+
+
+What is servlet attributes and their scope?
+Servlet attributes are used for inter-servlet communication, we can set, get and remove attributes in web application. There are three scopes for servlet attributes – request scope, session scope and application scope.
+
+ServletRequest, HttpSession, and ServletContext interfaces provide methods to get/set/remove attributes from request, session and application scope respectively.
+
+Servlet attributes are different from init parameters defined in web.xml for ServletConfig or ServletContext.
+
+
+How do we call one servlet from another servlet?
+We can
