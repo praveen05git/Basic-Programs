@@ -48,5 +48,8 @@ public class GFG {
 } 
 
 /*
+Sort odd elements in descending order and even elements in ascending order
+Consider the 1st element as even as array starts from 0
+
 OUTPUT: 0 5 2 3 4 1
 */
