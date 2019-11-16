@@ -1,0 +1,20 @@
+What are important features of Servlet 3?
+Servlet Specs 3.0 was a major release and some of the important features are:
+
+Servlet Annotations: Prior to Servlet 3, all the servlet mapping and its init parameters were used to defined in web.xml, this was not convenient and more error prone when number of servlets are huge in an application.
+Servlet 3 introduced the use of Java annotations to define a servlet, filter and listener servlets and init parameters. Some of the important Servlet API annotations are WebServlet, WebInitParam, WebFilter, and WebListener. Read more about them at Servlet 3 annotations.
+
+Web Fragments: Prior to servlet specs 3.0, all the web application configurations are required to be present in the web.xml that makes it cluttered with a lot of elements and chances of error increases. So servlet 3 specs introduced web fragments where we can have multiple modules in a single web application, all these modules should have a web-fragment.xml file in META-INF directory. We can include all the elements of web.xml inside the web-fragment.xml too. This helps us in dividing our web application into separate modules that are included as a JAR file in the web application lib directory.
+Adding Web Components dynamically: We can use ServletContext object to add servlets, filters and listeners programmatically. This helps us in building a dynamic system where we are loading a component only if we need it. These methods are addServlet(), addFilter() and addListener() defined in the servlet context object.
+Asynchronous Processing: Asynchronous support was added to delegate the request processing to another thread rather than keeping the servlet thread busy. It can increase the throughput performance of the application. This is an advance topic and I recommend to read Async Servlet tutorial.
+
+What are different ways for servlet authentication?
+Servlet Container provides different ways of login based servlet authentication:
+
+HTTP Basic Authentication
+HTTP Digest Authentication
+HTTPS Authentication
+Form Based Login: A standard HTML form for authentication, advantage is that we can change the login page layout as our application requirements rather than using HTTP built-in login mechanisms.
+
+How can we achieve transport layer security for our web application?
+We can configure our servlet container to use SSL for message communication over the network. To configure SSL on Tomcat, we need a digital certificate that can be created using Java keytool for a development environment. For the production environment, you should get the digital certificate from SSL certificate providers, for example, Verisign or Entrust.
