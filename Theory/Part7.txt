@@ -1,0 +1,31 @@
+How to notify an object in session when session is invalidated or timed-out?
+If we have to make sure an object gets notified when session is destroyed, the object should implement javax.servlet.http.HttpSessionBindingListener interface. This interface defines two callback methods – valueBound() and valueUnbound() that we can define to implement processing logic when the object is added as attribute to the session and when session is destroyed.
+
+Recommended reading Servlet Listener.
+
+
+What is the difference between encodeRedirectUrl and encodeURL?
+HttpServletResponse provide method to encode URL in HTML hyperlinks so that the special characters and white spaces are escaped and append session id to the URL. It behaves similar to URLEncoder encode method with additional process to append jsessionid parameter at the end of the URL.
+
+However HttpServletResponse encodeRedirectUrl() method is used specially for encode the redirect URL in response.
+
+So when we are providing URL rewriting support, for hyperlinks in HTML response, we should use encodeURL() method whereas for redirect URL we should use encodeRedirectUrl() method.
+
+
+Why do we have servlet filters?
+Servlet Filters are pluggable java components that we can use to intercept and process requests before they are sent to servlets and response after servlet code is finished and before container sends the response back to the client.
+
+Some common tasks that we can do with filters are:
+
+Logging request parameters to log files.
+Authentication and authorization of request for resources.
+Formatting of request body or header before sending it to servlet.
+Compressing the response data sent to the client.
+Alter response by adding some cookies, header information etc.
+Read more about filters at Servlet Filter.
+
+
+What is the effective way to make sure all the servlets are accessible only when the user has a valid session?
+We know that servlet filters can be used to intercept request between a servlet container and servlet, we can utilize it to create an authentication filter and check if the request contains a valid session or not.
+
+Check out Authentication Filter example at Servlet Filter Example.
