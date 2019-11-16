@@ -1,0 +1,33 @@
+What is difference between ServletConfig and ServletContext?
+Some of the differences between ServletConfig and ServletContext are:
+
+ServletConfig is a unique object per servlet whereas ServletContext is a unique object for complete application.
+ServletConfig is used to provide init parameters to the servlet whereas ServletContext is used to provide application level init parameters that all other servlets can use.
+We can’t set attributes in ServletConfig object whereas we can set attributes in ServletContext that other servlets can use in their implementation.
+
+What is Request Dispatcher?
+RequestDispatcher interface is used to forward the request to another resource that can be HTML, JSP or another servlet in the same application. We can also use this to include the content of another resource to the response. This interface is used for inter-servlet communication in the same context.
+
+There are two methods defined in this interface:
+
+void forward(ServletRequest request, ServletResponse response) – forwards the request from a servlet to another resource (servlet, JSP file, or HTML file) on the server.
+void include(ServletRequest request, ServletResponse response) – includes the content of a resource (servlet, JSP page, HTML file) in the response.
+We can get RequestDispatcher in a servlet using ServletContext getRequestDispatcher(String path) method. The path must begin with a / and is interpreted as relative to the current context root.
+
+
+What is difference between PrintWriter and ServletOutputStream?
+PrintWriter is a character-stream class whereas ServletOutputStream is a byte-stream class. We can use PrintWriter to write character based information such as character array and String to the response whereas we can use ServletOutputStream to write byte array data to the response.
+
+We can use ServletResponse getWriter() to get the PrintWriter instance whereas we can use ServletResponse getOutputStream() method to get the ServletOutputStream object reference.
+
+You can read more about IO in java at Java IO Tutorial.
+
+
+Can we get PrintWriter and ServletOutputStream both in a servlet?
+We can’t get instances of both PrintWriter and ServletOutputStream in a single servlet method, if we invoke both the methods; getWriter() and getOutputStream() on response; we will get java.lang.IllegalStateException at runtime with message as other method has already been called for this response.
+
+
+How can we create deadlock situation in servlet?
+We can create deadlock in servlet by making a loop of method invocation, just call doPost() method from doGet() method and doGet() method to doPost() method to create deadlock situation in servlet.
+
+Read more about deadlock in multithreading at Java Deadlock Example.
