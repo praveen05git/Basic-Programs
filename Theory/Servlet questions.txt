@@ -1,0 +1,52 @@
+What is different between web server and application server?
+A web server responsibility is to handler HTTP requests from client browsers and respond with HTML response. A web server understands HTTP language and runs on HTTP protocol.
+Apache Web Server is kind of a web server and then we have specific containers that can execute servlets and JSPs known as the servlet container, for example, Tomcat.
+Application Servers provide additional features such as Enterprise JavaBeans support, JMS Messaging support, Transaction Management, etc. So we can say that the Application server is a web server with additional functionalities to help developers with enterprise applications.
+
+
+Which HTTP method is non-idempotent?
+An HTTP method is said to be idempotent if it returns the same result every time. HTTP methods GET, PUT, DELETE, HEAD, and OPTIONS are idempotent method and we should implement our application to make sure these methods always return the same result. HTTP method POST is non-idempotent method and we should use post method when implementing something that changes with every request.
+
+For example, to access an HTML page or image, we should use GET because it will always return the same object but if we have to save customer information to the database, we should use the POST method. Idempotent methods are also known as safe methods and we don’t care about the repetitive request from the client for safe methods.
+
+
+What is the difference between GET and POST method?
+GET is a safe method (idempotent) where POST is non-idempotent method.
+We can send limited data with GET method and it’s sent in the header request URL whereas we can send large amount of data with POST because it’s part of the body.
+GET method is not secure because data is exposed in the URL and we can easily bookmark it and send similar request again, POST is secure because data is sent in request body and we can’t bookmark it.
+GET is the default HTTP method whereas we need to specify method as POST to send request with POST method.
+Hyperlinks in a page uses GET method.
+
+￼
+What is MIME Type?
+The “Content-Type” response header is known as MIME Type. Server sends MIME type to client to let them know the kind of data it’s sending. It helps client in rendering the data for user. Some of the mostly used mime types are text/html, text/xml, application/xml etc.
+
+We can use ServletContext getMimeType() method to get the correct MIME type of the file and use it to set the response content type. It’s very useful in downloading a file through servlet from the server.
+
+
+What is a web application and what is its directory structure?
+Web Applications are modules that run on the server to provide both static and dynamic content to the client browser. Apache webserver supports PHP and we can create a web application using PHP. Java provides web application support through Servlets and JSPs that can run in a servlet container and provide dynamic content to the client browser.
+
+Java Web Applications are packaged as Web Archive (WAR) and it has a defined structure like below image.
+
+￼
+
+Read more about web applications at Java Web Application.
+
+
+What is a servlet?
+Java Servlet is server side technologies to extend the capability of web servers by providing support for dynamic response and data persistence.
+
+The javax.servlet and javax.servlet.http packages provide interfaces and classes for writing our own servlets.
+
+All servlets must implement the javax.servlet.Servlet interface, which defines servlet lifecycle methods. When implementing a generic service, we can extend the GenericServlet class provided with the Java Servlet API. The HttpServlet class provides methods, such as doGet() and doPost(), for handling HTTP-specific services.
+
+Most of the times, web applications are accessed using HTTP protocol and that’s why we mostly extend HttpServlet class. Servlet API hierarchy is shown in the below image.
+
+￼
+
+Read more at Servlet Tutorial.
+
+
+What are the advantages of Servlet over CGI?
+Servlet technology was introduced to overcome the shortcomings of CGI
