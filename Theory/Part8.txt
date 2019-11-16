@@ -1,0 +1,32 @@
+Why do we have servlet listeners?
+We know that using ServletContext, we can create an attribute with application scope that all other servlets can access but we can initialize ServletContext init parameters as String only in the deployment descriptor (web.xml). What if our application is database-oriented and we want to set an attribute in ServletContext for Database Connection.
+
+If your application has a single entry point (user login), then you can do it in the first servlet request but if we have multiple entry points then doing it everywhere will result in a lot of code redundancy. Also if the database is down or not configured properly, we won’t know until the first client request comes to the server. To handle these scenarios, servlet API provides Listener interfaces that we can implement and configure to listen to an event and do certain operations.
+
+Read more about different types of listeners and example at Servlet Listener.
+
+
+How to handle exceptions thrown by application with another servlet?
+If you notice, doGet() and doPost() methods throw ServletException and IOException. Since browser understand only HTML, when our application throw exception, servlet container processes the exception and generate a HTML response. Same goes with other error codes like 404, 403 etc.
+
+Servlet API provides support for custom Exception and Error Handler servlets that we can configure in the deployment descriptor, the whole purpose of these servlets are to handle the Exception or Error raised by application and send HTML response that is useful for the user. We can provide a link to the application home page or some details to let the user know what went wrong.
+
+We can configure them in web.xml like below:
+
+
+<error-page>
+<error-code>404</error-code>
+<location>/AppExceptionHandler</location>
+</error-page>
+
+<error-page>
+<exception-type>javax.servlet.ServletException</exception-type>
+<location>/AppExceptionHandler</location>
+</error-page>
+Read more at Servlet Exception Handling.
+
+
+What is a deployment descriptor?
+The deployment descriptor is a configuration file for the web application and its name is web.xml and it resides in WEB-INF directory. Servlet container uses this file to configure web application servlets, servlet config params, context init params, filters, listeners, welcome pages and error handlers.
+
+With servlet 3.0 annotations, we can remove a lot of clutter from web.xml by configuring servlets, filters, and listeners using annotations.
