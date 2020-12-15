@@ -22,7 +22,7 @@ public class HelloWorld{
             aList.add(arr[i++]);
         }
         
-        if(arr.length%2==0)
+        if(arr.length%2!=0)
         {
             aList.add(arr[i]);
         }
