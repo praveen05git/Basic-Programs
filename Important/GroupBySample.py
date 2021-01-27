@@ -18,7 +18,7 @@ print([k for k, g in groupby('AAAABBBCCDAABBB')])
 print([list(g) for k, g in groupby('AAAABBBCCD')])
 '''
 
-list = ["Apple","Orange","Apple","Mango"]
+list = ["Apple", "Orange", "Apple", "Mango"]
 dict = {}
 for num in list:
     if(num in dict):
@@ -27,9 +27,18 @@ for num in list:
         dict[num] = 1
 print(dict)
 
+a = 10
+b = 20
+print("arr {},{}".format(a, b))
+
 s = "hello.bello"
+print('\n'+s[::-1])
+
 arr = s.split(".")
-a=10
-b=20
-print("arr {},{}".format(a,b),end=" ")
-print(s[::-1])
+for i in reversed(range(len(arr))):
+    if i == 0:
+        print(arr[i])
+    else:
+        print(arr[i], end=".")
+for ele in reversed(arr):
+    print(ele, end=".")
